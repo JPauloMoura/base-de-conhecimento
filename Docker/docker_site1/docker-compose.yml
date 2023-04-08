@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  site: 
+    image: jp/site1
+    ports: 
+      - 8080:80 # localHost:container
+    volumes:
+      - ./html:/usr/share/nginx/html
