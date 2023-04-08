@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  #nome do meu serviço
+  server-go:
+    image: api-go
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/src/app/

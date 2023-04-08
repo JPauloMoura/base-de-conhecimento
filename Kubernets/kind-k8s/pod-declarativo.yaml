@@ -1,0 +1,9 @@
+# Criando um pod de forma declarativo
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-declarativo
+spec:
+  containers:
+    - name: pod-declarativo
+      image: nginx:latest

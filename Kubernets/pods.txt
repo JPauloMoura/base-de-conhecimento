@@ -1,0 +1,35 @@
+cluste(varios serves)
+o k8s chama os serves de 'nodes'
+cada node pode rodar varios containers
+pod --> menor estrutura do k8s
+	-um POD,  pode ter 1 ou mais containers
+	-na pratica só usamos 1 container por POD
+	-cada POD tem um IP unico
+	-pode ter volume
+
+Em que sintuação temos mais de um container por POD?
+    - podemos ter um container com BD que so é usado naquele POD
+    - ou outro serviço que só e usando dentro daquele POD
+    
+ Ciclo de vida dos PODs:
+ --> Pending
+ 	o POD foi aceito pelo K8s, mais seus containes ainda não foram criados
+ --> Running
+     quando um pode é alocado para um node(servidor)
+ --> Unknown
+ 	   quando não obtemos o status do POD
+ 	   geralmente erro de comunicação ente node e POD
+ 	   ou alguma falha na rede
+ --> Failed
+       quando algun conteiner falha na sua inicialização
+ --> Succeded
+ 		Quando o POD passar por todos os processos e finalizar.
+ _____________________________________________
+|                    _________________________________
+|				    |	server1 (node1)--> [  container1,  container2 ]
+| cluster  | __________________________________
+|	                |   server 2 (node2) -->   [ container1,  container2  ]
+|                    |_________________________________
+|_____________________________________________
+
+

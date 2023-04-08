@@ -1,0 +1,37 @@
+# Kubernets
+	sinonimos :
+		- servidor(server), node, master(worker)
+
+Objetos do kubernets:
+	- Pods
+	- Nodes
+	- Deployments
+	- ReplicaSet
+	-	Services
+
+Utilizamos normalmente o YAML como aquivo de configuração (Manifesto)
+	declaramos no kind: <tipo-de-objeto>
+
+Formas de interção com o kubernets:
+	Modo imperativo:
+		- kubectl CLI parâmetros
+		- usado quando estamos debugando
+		- Interções:
+			$ kubectl get <pods, nodes, services, deployments>
+			$ kubectl describe <pod, node, service, deployment> <nome>
+			$ kubectl delete <pod, node, service, deployment> <nome>	
+			$ kubectls <Create, Run, Scale, Expose, Exec, Copy, Logs>		
+
+	Modo declarativo:
+		- usa os manifestos e $ kubectl apply
+		- gerenciar k8s em ambiente de produção
+		- Interação:
+			$ kubectl apply -f <file.yaml>
+			$ kubectl apply -f <file.yaml> -f  <file2.yaml>
+			$ kubectl apply -f <folder/>
+
+Namespace
+	Divisão lógica com "pastas" para separarmos os objetos dentro do cluster
+
+
+

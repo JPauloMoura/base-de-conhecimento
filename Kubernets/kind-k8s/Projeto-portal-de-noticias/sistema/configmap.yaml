@@ -1,0 +1,12 @@
+# esse configmap é responsavel por armazenar
+# as envs de conexão com o service DB
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sistema-noticias-configmap
+data:
+# aqui podemos udar nome ou IP do service
+  HOST_DB: svc-db-noticias:3306
+  USER_DB: root
+  PASS_DB: q1w2e3r4
+  DATABASE_DB: empresa

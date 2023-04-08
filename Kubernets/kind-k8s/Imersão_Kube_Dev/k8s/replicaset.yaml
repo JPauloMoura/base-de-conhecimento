@@ -1,0 +1,24 @@
+# definir replicaset
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: meu-replicaset
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: conversor-pod
+  template:
+    metadata:
+      labels:
+        app: conversor-pod
+    spec:
+      containers:
+      - name: conversor-container
+        image: jp0user0docker/conversao-temperatura:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3001

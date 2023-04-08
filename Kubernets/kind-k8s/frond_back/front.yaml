@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-pod
+  template:
+    metadata:
+      labels:
+        app: front-pod
+    spec:
+      containers:
+      - name: front-container
+        image: jp0user0docker/validator-uuid-front:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-back-end
+spec:
+  type: NodePort
+  selector:
+    app: front-pod
+  ports:
+  - port: 80
+    nodePort: 30000

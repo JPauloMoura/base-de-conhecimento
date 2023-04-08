@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: meu-pod
+  labels:
+    name: meu-pod
+spec:
+  containers:
+  - name: meu-pod
+    image: jp0user0docker/conversao-temperatura:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3001

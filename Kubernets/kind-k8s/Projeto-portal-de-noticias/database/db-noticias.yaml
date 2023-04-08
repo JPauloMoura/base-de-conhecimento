@@ -1,0 +1,17 @@
+# esse é o pod com o DB do sistema de noticias
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-noticias-pod
+  labels:
+    app: db-noticias-pod
+spec:
+  containers:
+    - name: db-noticias-container
+      image: aluracursos/mysql-db:1
+      ports:
+        - containerPort: 3306
+      # assim lemos todas as envs do configMap
+      envFrom:
+        - configMapRef:
+            name: db-configmap

@@ -1,0 +1,9 @@
+- clonar a plicação
+- criar imagem da aplicação 2:02hrs
+- realizar push para o registre
+
+- cria um deploy do mongo db
+- criar um service para o mongodb
+
+- cria um deploy da aplicação
+- cria um service da aplicação

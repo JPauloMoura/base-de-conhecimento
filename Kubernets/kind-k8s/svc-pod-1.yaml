@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-pod-1
+spec:
+# usando o ClusterIP, esse service só é acessado dentro do cluster
+  type: ClusterIP
+# o select serve para identificarmos qual o pod que esse serviço deve apontar
+# isso e feito atravez do atributo label do pod.
+  selector:
+    app: pod-1
+  ports:
+  - port: 9000
+    targetPort: 80

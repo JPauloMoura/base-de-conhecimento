@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-pod-2
+spec:
+# Esse type significa que o serviço pode ser acessado pelo ip do node
+  type: NodePort
+  selector:
+    app: pod-2
+# node -> service -> pod 
+  ports:
+  - port: 9000
+    targetPort: 80
+    nodePort: 30000

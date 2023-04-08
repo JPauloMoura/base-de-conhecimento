@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-go-pod
+  labels:
+    name: api-go-pod
+spec:
+  containers:
+  - name: api-go-pod
+    image: api:latest
+    imagePullPolicy: Never
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3333

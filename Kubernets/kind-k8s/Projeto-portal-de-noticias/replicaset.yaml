@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+# Podemos alter para Deployment
+kind: ReplicaSet 
+metadata:
+  name: nginx-replicaset
+spec:
+  template:
+    metadata:
+      name: nginx-app
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+  replicas: 6
+  selector:
+    matchLabels:
+      app: nginx-app
+
+# Replicasets definem a quantidade de pods que desejamos termos em execução
+# Assim caso algun pod não esteja up, ele garante que um novo vai ser criado.
+
+#Já o Deployment é a junção entres pods e reclicaset.
+# Além de fazer a função dos dois, com ele podemos utilizar novas funcionalidades
+# como ter o historico de versão, da rollout, etc.. 
+
