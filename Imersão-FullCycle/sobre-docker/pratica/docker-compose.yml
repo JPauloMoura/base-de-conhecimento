@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  #nome do meu serviço
+  server-go:
+    image: jp/server-go
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/src/app/

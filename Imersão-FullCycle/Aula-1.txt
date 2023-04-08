@@ -1,0 +1,6 @@
+> Crie os arquivos "Dockerfile" e "docker-compose.yaml" apois isso inicie esse container
+> Entre no terminal do container  e veja que estamos compartilhando os mesmos arquivos
+> Crie um go.mod dentro do seu container para gerenciar seus pacotes e libs
+  $ go mod init github.com/JPaulomoura/simulator
+
+> nosso simulator vai receber uma rota e vai retorna as posições do carrinho/entregador 

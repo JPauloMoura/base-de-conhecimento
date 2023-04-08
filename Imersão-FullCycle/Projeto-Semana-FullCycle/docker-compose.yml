@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+#imagem que vai ser usada, no caso o Dockefile
+    build: .
+    container_name: simulator
+    volumes:
+#compartilhamento, local:container
+      - .:/go/src/ 
+    extra_hosts: 
+#comunicação entre os sistemas atravez da rede do docker
+      - "host.docker.internal:172.17.0.1"
+
+# execute: $ docker-compose up -d
