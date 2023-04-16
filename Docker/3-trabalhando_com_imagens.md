@@ -43,3 +43,45 @@ Passo a passo do comando!
 - `mongo` por ultimo colocamos o nome da imagem que o container vai usar para ser criado.
 
 Você pode usar o robo3t para se conectar e manipular o banco :).
+
+# Como as imagens  docker são criadas?
+Elas são criadas atravez de camadas reaproveitaveis.
+ex: Se criamos duas imagens e elas compartilham algo em comum, por exemplo o SO
+elas não teram que ter uma comada individual pra cada, mas apenas referencia-la
+
+ | camada A |       | camada T |
+ | camada B |   ->  | camada B |
+ | camada C |       | camada F |
+
+Para criar imagens docker utilizamos aquivos `Dockerfile` onde descrevermos passo a passo como ela deve ser criada.
+```yaml
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install curl --yes
+```
+` $ docker build -t ubuntu-com-curl ./Dockerfile`
+Essa imagem tem 3 camadas:
+- usa como base a imagem do unbuntu
+- roda o comando de update
+- roda o comanda para instalação do curl
+Quando realizamos a construção dessa imagem cada step é colocado em cache, assim
+caso executemos o build novamente,vamos aproveitar a camada que já existe.
+
+O problema disso nesse com base nesse exemplo é que se alterarmos a instalação do curl para outra lib
+é ele não existir nos repositorios do apt-get atualizados que estão no cache, teremos problemas
+ela deve ser criada.
+```yaml
+FROM ubuntu # em cache
+RUN apt-get update # em cache
+RUN apt-get install vim --yes # latest
+```
+
+Para resolver esse problema basta colocarmos esses passos na mesma camada
+ela deve ser criada.
+```yaml
+FROM ubuntu # em cache
+RUN apt-get update && apt-get install curl --yes # latest
+```
+Assim cada vez que essa camada tiver alguma alteração, tudo nela sera atualizado.
+
+> Como cada caso é um caso, termos que identifificar quando faz ou não sentido usar o cache
